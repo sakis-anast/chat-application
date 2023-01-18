@@ -67,3 +67,31 @@ if (user){
     deleteUser,
     logIn
   }
+
+  // using token with login
+//   const logIn = async (req, res) => {
+//     const user = await User.findOne({username: req.body.username})
+// if (user){
+//   bcrypt.compare(req.body.password, user.password , function (err , result) {
+//     if(result){
+//     const token = jwt.sign({id : user._id }, "secret" , {expiresIn:"45s"})
+//     res.send({token}
+//       );
+//     }else{
+//     res.send({message: "Wrong Password"});
+//     }
+//   })}
+//   else {
+//     res.send({message:"Wrong Username"})
+//   }};
+
+//   const verify = async (req, res) => {
+//     jwt.verify(req.body.token, 'secret', async (err, decoded)=> {
+//       if(err){
+//         res.send(err)
+//       }else{
+//       const userId = decoded.id
+//       const user = await User.findOne({_id : userId})
+//       res.send(user) 
+//     }
+//     });};
