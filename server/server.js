@@ -5,7 +5,6 @@ const app = express();
 const connection = require("./modules/connection");
 const userRoute= require("./routers/userRoute");
 const messageRoute= require("./routers/messageRoute");
-
 const port = 3001
 const cors = require("cors");
 app.use(bodyParser.json());
