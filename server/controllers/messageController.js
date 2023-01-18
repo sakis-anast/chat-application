@@ -2,7 +2,7 @@ const  Message = require("../modules/MessageModel")
 const getMessage= async (req, res) => {
     try {
       const message = await Message.find({}).populate("user");
-      res.send(message);
+      res.json(message);
     } catch (err) {
       res.status(500).json({
         status: "Failed",
