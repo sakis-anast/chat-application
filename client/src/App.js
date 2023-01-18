@@ -3,11 +3,12 @@ import {Routes, Route} from "react-router-dom";
 
 //importing components
 import SignupLogin from "../src/components/signup-login/SignupLogin";
+import UserHomepage from "../src/components/user-homepage/UserHomepage";
 
 function App() {
   return (
     <Routes>
-        <Route path="/" element={<SignupLogin/>}></Route>
+        <Route path="/" element={<UserHomepage/>}></Route>
     </Routes>
   );
 }
