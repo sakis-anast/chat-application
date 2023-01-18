@@ -13,15 +13,18 @@ const getUser = async (req, res) => {
   };
   
   const signUp= async (req, res) => {
-    if (!req.body.username || !req.body.password) {
+    if (!req.body.username || !req.body.password || !req.body.email) {
      res.send({message: "please send correct data"})
     } else{
-      const check = await User.find({username: req.body.username})
-    if (check.length){
+      const checkUsername = await User.find({username: req.body.username})
+    if (checkUsername.length){
       res.send({message: "username already exist"})}
+      const checkEmail = await User.find({email: req.body.email})
+    if (checkEmail.length){
+      res.send({message: "email already used"})}
       else{
       bcrypt.hash(req.body.password, 10 , function (err , hash) {
-        const user = new User({username: req.body.username, password : hash });
+        const user = new User({username: req.body.username,email:req.body.email,  password : hash });
         user.save();
         res.send({message : true})
       })
