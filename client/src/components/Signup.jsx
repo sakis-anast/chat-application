@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "../../styles/SignupLogin.scss";
 
-function SignupLogin(){
+function Signup(){
 
     let [toggle, setToggle] = useState(false);
 
@@ -65,4 +65,4 @@ function SignupLogin(){
 
     );
 }
-export default SignupLogin;
+export default Signup;
