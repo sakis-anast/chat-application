@@ -1,15 +1,22 @@
 //importing router route & routes
-import {Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 //importing components
-import SignupLogin from "../src/components/signup-login/SignupLogin";
-import UserHomepage from "../src/components/user-homepage/UserHomepage";
+import Signup from "./components/Signup";
+import Chatty from "./components/Chatty";
+import Login from "./components/Login";
+
+
 
 function App() {
   return (
-    <Routes>
-        <Route path="/" element={<UserHomepage/>}></Route>
-    </Routes>
+    <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Signup/>}></Route>
+          <Route path="/chat" element={<Chatty/>}></Route>
+          <Route path="/login" element={<Login/>}></Route>
+        </Routes>
+    </BrowserRouter>
   );
 }
 
