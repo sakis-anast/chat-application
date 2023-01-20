@@ -1,4 +1,4 @@
-import "../../styles/UserHomepage.scss";
+
 function UserHomepage(){
     return(
         <div className="homepage-container">
