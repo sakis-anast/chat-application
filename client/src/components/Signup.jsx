@@ -6,6 +6,8 @@ import "../styles/Signup.scss";
 
 function Signup(){
 
+    const navigate = useNavigate();
+
     //user input values
     let [values, setValues] = useState({
         username:"",
@@ -41,7 +43,13 @@ function Signup(){
 
             const {username, email, password} = values;
             await axios.post("http://localhost:3001/users/signup", {username,email,password})
-                        .then(alert("added"));
+                        .then(({ data }) => {
+                            if (data.message === true) {
+                            navigate("/login");
+                            } else {
+                            alert(data.message);
+                            }
+                        });
         }
     };
 
@@ -51,9 +59,9 @@ function Signup(){
         <>
             <div className="signup-form-container">
                 <form action="" className="signup-form-field" onSubmit={(e) => submitHandler(e)}>
-                    <div>
-                        <img src="" alt="" />
-                        <h1>Sign up</h1>
+                    <div  className="signup-form-div">
+                        <img src="" alt="" className="signup-form-img"/>
+                        <h1 className="signup-form-header">Sign up</h1>
                     </div>
                     <div className="signup-inputs-container">
                         <input type="text" placeholder="username" name="username" onChange={(e) => changeHandler(e)}/>
