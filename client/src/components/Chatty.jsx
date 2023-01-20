@@ -8,6 +8,7 @@ const [users , setUsers] = useState([])
 const [ user , setUser]= useState(undefined)
 const [ currentChat , setCurrentChat] = useState(undefined)
 const navigate = useNavigate()
+
 // useEffect(async () => {
 //     if (!localStorage.getItem("chat-app-user")) {
 //       navigate("/login");

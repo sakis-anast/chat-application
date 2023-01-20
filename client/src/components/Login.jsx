@@ -5,6 +5,9 @@ import "../styles/Login.scss";
 
 
 function Login() {
+
+    const navigate = useNavigate();
+
      //user input values
      let [values, setValues] = useState({
         username:"",
@@ -39,7 +42,13 @@ function Login() {
 
             const {username, password} = values;
             await axios.post("http://localhost:3001/users/login", {username,password})
-                        .then(alert("Welcome"));
+                        .then(({ data }) => {
+                            if (data.message === true) {
+                            navigate("/chat");
+                            } else {
+                            alert(data.message);
+                            }
+                        });
         }
     };
   
@@ -47,12 +56,12 @@ function Login() {
     <>
         <div className="login-form-container">
             <form action="" className="login-form-field" onSubmit={(e) => submitHandler(e)}>
-                <div>
-                    <img src="" alt="" />
-                    <h1>Login</h1>
+                <div className="login-form-div">
+                    <img src="" alt="" className="login-form-img"/>
+                    <h1 className="login-form-header">Login</h1>
                 </div>
                 <div className="login-inputs-container">
-                    <input type="text" placeholder="username" name="username" onChange={(e) => changeHandler(e)}/>
+                    <input type="text" placeholder="username" name="username" onChange={(e) => changeHandler(e)} />
                     <input type="text" placeholder="password" name="password" onChange={(e) => changeHandler(e)} />
                     <button>Login</button>
                     <span>don't have an account ?<Link to="/">Signup</Link></span>
