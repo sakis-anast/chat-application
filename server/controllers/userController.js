@@ -2,7 +2,11 @@ const User = require("../modules/userModel")
 const bcrypt = require("bcrypt")
 const getUser = async (req, res) => {
     try {
-      const users = await User.find({})
+      const users = await User.find({ _id: { $ne: req.params.id } }).select([
+        "email",
+        "username",
+        "_id",
+      ]);
       res.json(users);
     } catch (err) {
       res.status(500).json({
@@ -26,7 +30,7 @@ const getUser = async (req, res) => {
       bcrypt.hash(req.body.password, 10 , function (err , hash) {
         const user = new User({username: req.body.username,email:req.body.email,  password : hash });
         user.save();
-        res.send({message : true})
+        res.send({message : true , user})
       })
         
     }}}

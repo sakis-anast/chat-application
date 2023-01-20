@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect } from "react";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import "../styles/Login.scss";
@@ -36,6 +36,12 @@ function Login() {
        }
     }
 
+    useEffect(() => {
+        if (localStorage.getItem("user")) {
+          navigate("/chat");
+        }
+      }, []);
+
     const submitHandler =  async (event) => {
         event.preventDefault();
         if(validationHandler()){
@@ -44,6 +50,11 @@ function Login() {
             await axios.post("http://localhost:3001/users/login", {username,password})
                         .then(({ data }) => {
                             if (data.message === true) {
+                                localStorage.setItem(
+                                    "user",
+                                    JSON.stringify(data.user)
+                                  );
+                                  console.log(localStorage)
                             navigate("/chat");
                             } else {
                             alert(data.message);

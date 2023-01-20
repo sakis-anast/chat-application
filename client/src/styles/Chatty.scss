@@ -1,0 +1,81 @@
+// .chatty{
+//     height: 100vh;
+//     width: 100vw;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     align-items: center;
+//     border: 3px solid black;
+//     .usersContainer{
+//     height: 70vh;
+//     width: 70vw;
+//     display: grid;
+//     grid-template-columns: 25% 75%;
+//     border: 3px solid red;}  
+//     }
+
+
+    .usersContainer
+  {
+    display: grid;
+  grid-template-rows: 10% 75% 15%;
+  overflow: hidden;}
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    img {
+      height: 2rem;
+    }
+  }
+  .users {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+    .contact {
+      background-color: #ffffff34;
+      min-height: 5rem;
+      cursor: pointer;
+      width: 90%;
+      border-radius: 0.2rem;
+      padding: 0.4rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      .username {
+        h3 {
+          color: white;
+        }
+      }
+    }
+    .selected {
+      background-color: #9a86f3;
+    }
+  
+//   .user {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     gap: 2rem;
+//     }
+
+
+.chatty{height: 100vh;
+width: 100vw;
+display: flex;
+flex-direction: column;
+justify-content: center;
+gap: 1rem;
+align-items: center;
+background-color: red;
+.usersContainer {
+  height: 85vh;
+  width: 85vw;
+  background-color: yellow;
+  display: grid;
+  grid-template-columns: 25% 75%;
+
+}}
