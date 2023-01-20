@@ -1,68 +1,72 @@
 import { useState } from "react";
+import {Link, useNavigate} from "react-router-dom";
+import axios from "axios";
+import "../styles/Signup.scss";
 
-import "../../styles/SignupLogin.scss";
 
 function Signup(){
 
-    let [toggle, setToggle] = useState(false);
+    //user input values
+    let [values, setValues] = useState({
+        username:"",
+        email:"",
+        password:""
+    });
 
-    function toggler(){
-        setToggle(!toggle);
+    //handel input change
+    const changeHandler = (event) => {
+        setValues(
+            {...values, [event.target.name] : event.target.value}
+        );
+    };
+
+    const validationHandler = (event) => {
+        const {username, email, password} = values;
+       if(username == ""){
+            alert("enter username");
+            return false;
+       }
+       else if(username.length < 3){
+        alert("username must be at least 3 characters long.");
+        return false;
+       }
+       else{
+        return true;
+       }
     }
 
-    return( (toggle) ?
+    const submitHandler =  async (event) => {
+        event.preventDefault();
+        if(validationHandler()){
 
-        <div className="form-container">
- 
-            <div className="form-field">
-
-                    <div className="form-header-container">
-                        <h1 className="form-header">Login</h1>
-                    <div/>
-                        
-                    <div className="inputs-container">
-
-                        <label for="username">Username</label>
-                        <input type="text"/>
+            const {username, email, password} = values;
+            await axios.post("http://localhost:3001/users/signup", {username,email,password})
+                        .then(alert("added"));
+        }
+    };
 
 
-                        <label for="password">Password</label>
-                        <input type="password"/>
 
-                        <button onClick={toggler}>i don't have an account</button>
-                        <button>Sign Up</button>
-
+    return(
+        <>
+            <div className="signup-form-container">
+                <form action="" className="signup-form-field" onSubmit={(e) => submitHandler(e)}>
+                    <div>
+                        <img src="" alt="" />
+                        <h1>Sign up</h1>
                     </div>
-                </div>
+                    <div className="signup-inputs-container">
+                        <input type="text" placeholder="username" name="username" onChange={(e) => changeHandler(e)}/>
+                        <input type="text" placeholder="email" name="email" onChange={(e) => changeHandler(e)}/>
+                        <input type="text" placeholder="password" name="password" onChange={(e) => changeHandler(e)}/>
+                        <button>Create User</button>
+                        <span>I already have an account ? <Link to="/login">Login</Link></span>
+                    </div>
+
+                </form>
             </div>
-        </div>
-        :(<div className="form-container">
- 
-        <div className="form-field">
-
-                <div className="form-header-container">
-                    <h1 className="form-header">Sign up</h1>
-                <div/>
-                    
-                <div className="inputs-container">
-
-                    <label for="username">Username</label>
-                    <input type="text"/>
-
-                    <label for="email">Email</label>
-                    <input type="email"/>
-
-                    <label for="password">Password</label>
-                    <input type="password"/>
-                    <button onClick={toggler}>I already have an account</button>
-                     
-                    <button>Sign Up</button>
-
-                </div>
-            </div>
-        </div>
-    </div>)
-
+            
+        </>
     );
 }
 export default Signup;
