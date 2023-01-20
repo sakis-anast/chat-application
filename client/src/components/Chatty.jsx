@@ -1,56 +1,65 @@
+import React from "react";
+import Users from "./Users";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import {  useNavigate } from "react-router";
+function Chatty(){
+const [users , setUsers] = useState([])
+const [ user , setUser]= useState(undefined)
+const [ currentChat , setCurrentChat] = useState(undefined)
+const navigate = useNavigate()
+// useEffect(async () => {
+//     if (!localStorage.getItem("chat-app-user")) {
+//       navigate("/login");
+//     } else {
+//         setUser(await json.parse(localStorage.getItem("chat-app-user")))
+//     }
+//   }, []);
 
-function UserHomepage(){
+// useEffect(async()=>
+//  {if(user){
+//     const data = await axios.get("")
+//     setUsers(data.data)
+//  }
+//  },[user]
+// )
+
+const handleChange =(chat)=>{
+    setCurrentChat(chat)
+}
+
     return(
-        <div className="homepage-container">
+        
+        <div className="chatty">
+            <div className="usersContainer">
+                <Users  
+                users={users}
+                user={user}
+                changeChat={handleChange}
+                />
 
-            <div className="homepage-nav-container">
-
-                <nav className="homepage-nav">
-
-                    <div className="homepage-user-profile-pic-container">
-                        
-                        <img src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png" alt="" className="homepage-user-profile-pic"/>
-                        
-                    </div>
-                    <div className="homepage-logout-btn-container">
-                        
-                        <button className="homepage-logout-btn">Logout</button>
-                    </div>  
-                </nav>
-
-                <div className="homepage-body-container">
-
-                    <div className="homepage-body-userlist-container">
-                        USERLIST
-
-                    </div>
-
-                    <div className="homepage-body-chatarea-container">
-
-                        <div className="chatarea">
-                            Chat area
-                        </div>
-
-                        <div className="chatarea-inputs">
-                            
-                            
-                            <div className="chatarea-input-container">
-                                <label htmlFor="chat-input"></label>
-                                <input type="text" className="chatarea-input"/>
-                            </div>
-                            
-                            <div className="chatarea-btn-container">
-                                <button className="chatarea-btn">Send</button>
-                            </div>
-
-                            
-                        </div>
-
-                    </div>
-                </div>
             </div>
+
         </div>
     );
 
 }
-export default UserHomepage;
+export default Chatty;
+
+
+
+//  .chatty{
+//      height: 100vh;
+//      width: 100vw;
+//      display: flex;
+//      flex-direction: column;
+//      justify-content: center;
+//      align-items: center;
+//      border: 3px solid black;
+//      .usersContainer{
+//      height: 70vh;
+//      width: 70vw;
+//      display: grid;
+//      grid-template-columns: 25% 75%;
+//      border: 3px solid red;}  
+//      }
