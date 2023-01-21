@@ -1,7 +1,7 @@
 import React from 'react'
 import {  useState , useEffect} from 'react';
 import logo from "../logo_transparent.png";
-function Users({users , user , handleChange}) {
+function Users({users , user , setCurrentChat}) {
     const [username , setUsername]= useState(undefined)
     const [selected , setSelected]= useState(undefined)
 
@@ -15,7 +15,7 @@ function Users({users , user , handleChange}) {
       }, []);
     const changeChat= (index , contact)=>{
         setSelected(index)
-        //handleChange(contact)
+        setCurrentChat(contact)
     }
   return <>
     {

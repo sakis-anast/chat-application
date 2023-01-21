@@ -8,6 +8,7 @@ function Logout() {
     const navigate = useNavigate();
 
     const logoutHandle = () => {
+      localStorage.clear()
         navigate("/");
     }
 

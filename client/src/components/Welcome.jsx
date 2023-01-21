@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Welcome.scss";
-const logo = require("../welcome.gif");
+// const logo = require("../welcome.gif");
 
 
 
@@ -10,10 +10,10 @@ function Welcome() {
   return (
     <div className="welcome-container">
 
-        <div className="welcome-img-container">
+        {/* <div className="welcome-img-container">
             <img src={logo} alt="" />
         </div>
-      
+       */}
       <div className="welcome-heading-container">
         <h1>
             Welcome, <span>User</span>

@@ -24,11 +24,11 @@ function Login() {
 
     const validationHandler = (event) => {
         const {username, email, password} = values;
-       if(username == ""){
+       if(username === ""){
             alert("username is required");
             return false;
        }
-       else if(password == ""){
+       else if(password === ""){
         alert("password is required");
         return false;
        }
@@ -37,11 +37,11 @@ function Login() {
        }
     }
 
-    /*useEffect(() => {
+    useEffect(() => {
         if (localStorage.getItem("user")) {
           navigate("/chat");
         }
-      }, []);*/
+      }, []);
 
     const submitHandler =  async (event) => {
         event.preventDefault();
@@ -55,7 +55,6 @@ function Login() {
                                     "user",
                                     JSON.stringify(data.user)
                                   );
-                                  console.log(localStorage)
                             navigate("/chat");
                             } else {
                             alert(data.message);

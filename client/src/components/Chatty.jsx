@@ -37,9 +37,9 @@ useEffect(()=>{
 },[user]
 )
 
-const handleChange =(chat)=>{
-    setCurrentChat(chat)
-}
+// const handleChange =(chat)=>{
+//     setCurrentChat(chat)
+// }
 
     return(
         
@@ -49,16 +49,15 @@ const handleChange =(chat)=>{
                 <Users  
                 users={users}
                 user={user}
-                changeChat={handleChange}
+                setCurrentChat={setCurrentChat}
                 />
 
-                {/*I WAS NOT ABLE TO MAKE THIS TERNARY OPERATOR*/}
                 { currentChat === undefined ? (
                     <Welcome/>
                 ) : (
                     <div className="container-2">
                         <ChattyHeader/>
-                        <MessageBar handleChange={handleChange}/>
+                        <MessageBar handleChange={setCurrentChat}/>
                     </div>
                 )}
             </div>
