@@ -23,7 +23,8 @@ function Users({users , user , handleChange}) {
             <div className='info'>
             <img src={logo} alt="logo" />
             <h4>Chatty</h4>
-           
+            <div className="user">
+                    Welcomes {username}</div>
             </div>
             <div className="users">
                 { users.map((contact, index)=>{
@@ -37,8 +38,7 @@ function Users({users , user , handleChange}) {
                         </div>
                     )
                 })}
-                 <div className="user">
-                    Welcome {username}</div>
+               
 
             </div>
 

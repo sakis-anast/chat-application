@@ -38,7 +38,7 @@ const handleChange =(chat)=>{
     return(
         
         <div className="chatty">
-            <div className="usersContainer">
+            <div className="container">
                 <Users  
                 users={users}
                 user={user}
