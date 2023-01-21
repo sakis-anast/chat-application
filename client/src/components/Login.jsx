@@ -37,11 +37,11 @@ function Login() {
        }
     }
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (localStorage.getItem("user")) {
           navigate("/chat");
         }
-      }, []);
+      }, []);*/
 
     const submitHandler =  async (event) => {
         event.preventDefault();
