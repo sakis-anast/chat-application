@@ -24,11 +24,11 @@ function Login() {
 
     const validationHandler = (event) => {
         const {username, email, password} = values;
-       if(username == ""){
+       if(username === ""){
             alert("username is required");
             return false;
        }
-       else if(password == ""){
+       else if(password === ""){
         alert("password is required");
         return false;
        }

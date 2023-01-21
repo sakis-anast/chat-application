@@ -13,12 +13,16 @@ const getMessage= async (req, res) => {
   
   
  const postMessage = async (req, res) => {
-    const message = new Message(req.body);
     try {
-      await message.save();
-      res.status(201).json({
-        message,
+      const { from, to, message } = req.body;
+      const data = await Message.create({
+        message: { text: message },
+        users: [from, to],
+        sender: from,
       });
+  
+      if (data) return res.json({ msg: "Message added successfully." });
+      else return res.json({ msg: "Failed to add message to the database" })
     } catch (err) {
       res.status(500).json({
         status: "Failed",
