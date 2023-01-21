@@ -4,8 +4,10 @@ import axios from "axios";
 import "../styles/Signup.scss";
 
 
+
 function Signup(){
 
+    const logo = require("../logo_transparent.png");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -66,7 +68,7 @@ function Signup(){
             <div className="signup-form-container">
                 <form action="" className="signup-form-field" onSubmit={(e) => submitHandler(e)}>
                     <div  className="signup-form-div">
-                        <img src="" alt="" className="signup-form-img"/>
+                        <img src={logo} alt="" className="signup-form-img"/>
                         <h1 className="signup-form-header">Sign up</h1>
                     </div>
                     <div className="signup-inputs-container">
@@ -74,7 +76,7 @@ function Signup(){
                         <input type="text" placeholder="email" name="email" onChange={(e) => changeHandler(e)}/>
                         <input type="text" placeholder="password" name="password" onChange={(e) => changeHandler(e)}/>
                         <button>Create User</button>
-                        <span>I already have an account ? <Link to="/login">Login</Link></span>
+                        <span>I already have an account? <Link to="/login"> Login</Link></span>
                     </div>
 
                 </form>

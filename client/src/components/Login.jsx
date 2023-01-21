@@ -6,6 +6,7 @@ import "../styles/Login.scss";
 
 function Login() {
 
+    const logo = require("../logo_transparent.png");
     const navigate = useNavigate();
 
      //user input values
@@ -68,14 +69,14 @@ function Login() {
         <div className="login-form-container">
             <form action="" className="login-form-field" onSubmit={(e) => submitHandler(e)}>
                 <div className="login-form-div">
-                    <img src="" alt="" className="login-form-img"/>
+                    <img src={logo} alt="" className="login-form-img"/>
                     <h1 className="login-form-header">Login</h1>
                 </div>
                 <div className="login-inputs-container">
                     <input type="text" placeholder="username" name="username" onChange={(e) => changeHandler(e)} />
                     <input type="text" placeholder="password" name="password" onChange={(e) => changeHandler(e)} />
                     <button>Login</button>
-                    <span>don't have an account ?<Link to="/">Signup</Link></span>
+                    <span>don't have an account ?<Link to="/"> Signup</Link></span>
                 </div>
 
             </form>
