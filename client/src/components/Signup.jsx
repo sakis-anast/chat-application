@@ -10,11 +10,11 @@ function Signup(){
     const logo = require("../logo_transparent.png");
     const navigate = useNavigate();
 
-    /*useEffect(() => {
+    useEffect(() => {
         if (localStorage.getItem("user")) {
           navigate("/chat");
         }
-      }, []);*/
+      }, []);
 
     //user input values
     let [values, setValues] = useState({

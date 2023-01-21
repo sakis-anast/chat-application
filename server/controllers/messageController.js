@@ -21,8 +21,8 @@ const getMessage= async (req, res) => {
         sender: from,
       });
   
-      if (data) return res.json({ msg: "Message added successfully." });
-      else return res.json({ msg: "Failed to add message to the database" })
+      if (data)  {res.json({ msg: "Message added successfully." });}
+      else{  res.json({ msg: "Failed to add message to the database" })}
     } catch (err) {
       res.status(500).json({
         status: "Failed",
