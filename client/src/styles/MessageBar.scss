@@ -1,9 +1,14 @@
 .msg-bar-container{
-    display: inline-block;
-    .msg-bar-input{
-        width: 30rem;
-    }
-    .msg-bar-btn{
-        width: 5rem;
+    display: flex;
+    justify-content: center;
+    .msg-bar-form{
+        input{
+            width: 42rem;
+            height: 2rem;
+        }
+        button{
+            width: 10rem;
+            height: 2rem;
+        }
     }
 }

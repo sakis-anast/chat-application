@@ -3,7 +3,13 @@ import Users from "./Users";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import {  useNavigate } from "react-router";
+
+import ChattyHeader from "./ChattyHeader";
+import MessageBar from "./MessageBar";
+import Welcome from "./Welcome";
+
 import "../styles/Chatty.scss";
+
  
 function Chatty(){
 const [users , setUsers] = useState([])
@@ -38,6 +44,7 @@ const handleChange =(chat)=>{
     return(
         
         <div className="chatty">
+
             <div className="container">
                 <Users  
                 users={users}
@@ -45,8 +52,17 @@ const handleChange =(chat)=>{
                 changeChat={handleChange}
                 />
 
+                {/*I WAS NOT ABLE TO MAKE THIS TERNARY OPERATOR*/}
+                { currentChat === undefined ? (
+                    <Welcome/>
+                ) : (
+                    <div className="container-2">
+                        <ChattyHeader/>
+                        <MessageBar handleChange={handleChange}/>
+                    </div>
+                )}
             </div>
-
+            
         </div>
     );
 
