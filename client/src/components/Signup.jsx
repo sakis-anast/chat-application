@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
 import "../styles/Signup.scss";
@@ -7,6 +7,12 @@ import "../styles/Signup.scss";
 function Signup(){
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (localStorage.getItem("user")) {
+          navigate("/chat");
+        }
+      }, []);
 
     //user input values
     let [values, setValues] = useState({
@@ -24,7 +30,7 @@ function Signup(){
 
     const validationHandler = (event) => {
         const {username, email, password} = values;
-       if(username == ""){
+       if(username === ""){
             alert("enter username");
             return false;
        }
