@@ -1,0 +1,14 @@
+//colors
+$primary-1:#34495E; 
+$primary-2:#6C7E8F;//font colors & button backgrounds
+$primary-3:#4A6075; 
+$primary-4:#20374D;
+$primary-5:#10253A; //container backgrounds & button fonts
+
+//universal selectors for resetting
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+}
