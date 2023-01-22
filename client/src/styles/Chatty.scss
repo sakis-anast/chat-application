@@ -1,20 +1,22 @@
 
+@import "variables";
 
-
-    .usersContainer
-  {
+    .usersContainer {
     display: grid;
-  grid-template-rows: 10% 75% 15%;
-  overflow: hidden;
- background-color: aqua;
-}
+    grid-template-rows: 10% 75% 15%;
+    height: 36rem;
+    overflow: hidden;
+    background-color: $primary-2;
+
+    }
   .info {
     display: flex;
     align-items: center;
     gap: 1rem;
+    color: $primary-5;
     justify-content: center;
     img {
-      height: 2rem;
+      height: 5rem;
     }
   }
   .users {
@@ -22,16 +24,50 @@
     flex-direction: column;
     align-items: center;
     gap: 0.8rem;
+    overflow: scroll;
+    height: 33rem;
+    /*&::-webkit-scrollbar {
+      width: 0.2rem;
+      &-thumb {
+        width: 0.1rem;
+        border-radius: 1rem;
+      }
+    }*/
+    /* width */
+&::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+&::-webkit-scrollbar-track {
+  background: $primary-2; 
+}
+ 
+/* Handle */
+&::-webkit-scrollbar-thumb {
+  background: $primary-5; 
+}
+
+/* Handle on hover */
+&::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
   }
     .contact {
-      background-color: #ffffff34;
+      //background-color: #ffffff34;
+      background-color: $primary-5;
+      color: $primary-2;
+      border-radius: 1em;
       min-height: 5rem;
       cursor: pointer;
       width: 80%;
       padding: 0.4rem;
       display: flex;
+      justify-content: center;
+      color: white;
       gap: 1rem;
       align-items: center;
+  
       .username {
         h3 {
           color: white;
@@ -39,7 +75,7 @@
       }
     }
     .selected {
-      background-color: #9a86f3;
+      background-color: $primary-1;
     }
   
   .user {
@@ -47,6 +83,7 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    
     }
 
 
@@ -82,11 +119,12 @@
         background-color: white;
         display: grid;
         grid-template-columns: 25% 75%;
+        overflow: hidden;
       }
       .container-2{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        /*display: flex;
+        flex-direction: column;*/
+        
       }
     }
   

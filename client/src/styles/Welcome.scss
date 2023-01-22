@@ -1,8 +1,11 @@
+@import "variables";
+
 .welcome-container{
     display: flex;
     flex-direction: column;
     align-items: center;
 
+    background-color: $primary-2;
     .welcome-img-container{
 
         display: flex;

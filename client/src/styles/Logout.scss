@@ -1,3 +1,13 @@
+@import "variables";
+
 .logout-btn-container{
-   
+    .logout-btn{
+        background-color: $primary-5;
+        color: $primary-2;
+        border-color: $primary-2;
+        border-radius: 1rem;
+        width: 6rem;
+        height: 2rem;
+        
+    }
 }
