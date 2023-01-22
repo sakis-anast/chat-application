@@ -32,7 +32,7 @@ function Users({users , user , setCurrentChat}) {
                         <div className={`contact ${index === selected? "selected" : ""}`} 
                         key={index}
                         onClick={()=>changeChat(index , contact)}>
-                            <div className="users">
+                            <div className="user">
                                 <p> {contact.username}</p>
                             </div>
                         </div>

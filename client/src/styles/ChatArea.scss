@@ -1,4 +1,4 @@
-
+@import "variables";
 // .chat-Area-container{
 //     background-color: aqua;
 //     height: 10%;
@@ -8,7 +8,7 @@
 
 // }
 
-.chat-container{
+/*.chat-container{
     padding-top: 8px;
     display: grid;
     grid-template-rows: 10% 80% 10%;
@@ -20,6 +20,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
+    background-color: green;
     .chatDetails{
       display: flex;
       align-items: center;
@@ -61,6 +62,78 @@
       justify-content: flex-start;
       .content {
         background-color: green;
+      }
+    }
+  }*/
+  .chat-container{
+    //display: flex;
+    //flex-direction: column;
+    //justify-content: space-around;
+    display: grid;
+    grid-template-rows: 3.6rem 28.3rem 5rem;
+    height: 100%;
+    gap: 0.3rem;
+    overflow: hidden;  
+    background-color: $primary-1;
+}
+.chatHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    background-color: $primary-2;
+    .chatDetails{
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: $primary-5;
+      
+    }
+  }
+  .chat-messages {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: auto;
+    background-color: $primary-1;
+    &::-webkit-scrollbar {
+      width: 0.2rem;
+      &-thumb {
+        width: 0.1rem;
+        border-radius: 1rem;
+      }
+    }
+    .message {
+      display: flex;
+      align-items: center;
+      
+      .content {
+        max-width: 40%;
+        overflow-wrap: break-word;
+        padding: 0.5rem;
+        font-size: 1.1rem;
+        border-radius: 0.8rem;
+
+      }
+    }
+    .send {
+      justify-content: flex-end;
+      .content {
+        background-color: $primary-2;
+        p{
+          color: aqua;
+          font-size: 1.1rem;
+        }
+      }
+    }
+    .receive {
+      justify-content: flex-start;
+      .content {
+        background-color: $primary-4;
+        p{
+          color: aqua;
+        }
       }
     }
   }
