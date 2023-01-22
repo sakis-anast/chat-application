@@ -2,21 +2,24 @@ import Logout from "./Logout";
 import axios from "axios";
 import MessageBar from "./MessageBar";
 import "../styles/ChatArea.scss";
-import ChatMessages from "./ChatMessages";
 import React , {useEffect , useState} from "react";
 function ChatArea({currentChat , user }){
     const [messages, setMessages] = useState([]);
 
-    useEffect(()=>{
-        async function getMessages(){
-          const result=  await axios.get("http://localhost:3001/message",{
-            from : user._id,
-            to : currentChat._id,
-        });
-        setMessages(result.data);}
-        getMessages();
-        console.log(messages)
-    },[currentChat])
+    useEffect( () => {
+      async function getMessages(){
+      const data = await JSON.parse(
+        localStorage.getItem("user")
+      );
+      const response = await axios.post("http://localhost:3001/message/get", {
+        from: data._id,
+        to: currentChat._id,
+      });
+      setMessages(response.data);
+    }
+    getMessages()
+  }, [currentChat]);
+ 
 const handleMessage =async (msg)=>{
     await axios.post("http://localhost:3001/message",{
         from : user._id,
@@ -28,7 +31,7 @@ const handleMessage =async (msg)=>{
 
     return(
         <>
-        {currentChat &&(<div className="chat-container">
+        {currentChat && (<div className="chat-container">
             <div className="chatHeader">
                 <div className="chatDetails">
                     <div className="chatUsername">
@@ -43,10 +46,10 @@ const handleMessage =async (msg)=>{
             <div >
               <div
                 className={`message ${
-                  message.fromSelf ? "sended" : "recieved"
+                  message.fromSelf ? "send" : "receive"
                 }`}
               >
-                <div className="content ">
+                <div className="content">
                   <p>{message.message}</p>
                 </div>
               </div>
