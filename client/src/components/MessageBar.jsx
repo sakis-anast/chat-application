@@ -4,7 +4,7 @@ import "../styles/MessageBar.scss";
 
 
 
-function MessageBar({handleChange}) {
+function MessageBar({handleMessage}) {
 
   const [message, setMessage] = useState("");
 
@@ -12,18 +12,19 @@ function MessageBar({handleChange}) {
   const sendMessage = (event) => {
     event.preventDefault();
     if(message.length > 0){
-      handleChange(message);
+      handleMessage(message);
       setMessage("");
-      alert("sent");
     }
   }
 
 
   return (
     <div className="msg-bar-container">
+      
       <form className='msg-bar-form' onSubmit={(e) => sendMessage(e)}>
-        <input type="text" placeholder="Message" className="msg-bar-input" value={message} onChange={(e) => setMessage(e.target.value)}/>
-        <button className="msg-bar-btn">Send</button>
+        <input type="text" placeholder="Type Your Message Here" className="msg-bar-input" value={message} onChange={(e) => setMessage(e.target.value)}/>
+        <button className="submit">Send</button>
+
       </form>
     </div>
   )

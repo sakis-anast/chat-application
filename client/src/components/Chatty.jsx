@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import {  useNavigate } from "react-router";
 
-import ChattyHeader from "./ChattyHeader";
+import ChatArea from "./ChatArea";
 import MessageBar from "./MessageBar";
 import Welcome from "./Welcome";
 
@@ -15,6 +15,8 @@ function Chatty(){
 const [users , setUsers] = useState([])
 const [ user , setUser]= useState(undefined)
 const [ currentChat , setCurrentChat] = useState(undefined)
+const [ loading , setLoading]= useState(false)
+
 const navigate = useNavigate()
 
 useEffect( () => {
@@ -23,6 +25,7 @@ useEffect( () => {
       navigate("/login");
     } else {
         setUser(await JSON.parse(localStorage.getItem("user")))
+        setLoading(true)
     }} 
     fetchData()
   }, []);
@@ -52,12 +55,16 @@ useEffect(()=>{
                 setCurrentChat={setCurrentChat}
                 />
 
-                { currentChat === undefined ? (
-                    <Welcome/>
+                {loading && currentChat === undefined ? (
+                    <Welcome
+                    user={user}
+                    />
                 ) : (
                     <div className="container-2">
-                        <ChattyHeader/>
-                        <MessageBar handleChange={setCurrentChat}/>
+                        <ChatArea
+                        user={user}
+                        currentChat ={currentChat}
+                        />
                     </div>
                 )}
             </div>
