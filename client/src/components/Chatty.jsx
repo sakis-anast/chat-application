@@ -1,22 +1,23 @@
 import React from "react";
 import Users from "./Users";
-import { useState, useEffect } from "react";
+import { useState, useEffect , useRef } from "react";
 import axios from "axios";
 import {  useNavigate } from "react-router";
 
 import ChatArea from "./ChatArea";
 import MessageBar from "./MessageBar";
 import Welcome from "./Welcome";
-
+import  {io} from "socket.io-client"
 import "../styles/Chatty.scss";
 
  
 function Chatty(){
+
+const socket= useRef();
 const [users , setUsers] = useState([])
 const [ user , setUser]= useState(undefined)
 const [ currentChat , setCurrentChat] = useState(undefined)
 const [ loading , setLoading]= useState(false)
-
 const navigate = useNavigate()
 
 useEffect( () => {
@@ -30,6 +31,12 @@ useEffect( () => {
     fetchData()
   }, []);
 
+useEffect(()=>{
+    if(user){
+        socket.current = io("http://localhost:3001");
+        socket.current.emit("add-user", user._id)
+    }
+},[user])
 useEffect(()=>{
     async function fetchData(){
         if(user){
@@ -64,6 +71,7 @@ useEffect(()=>{
                         <ChatArea
                         user={user}
                         currentChat ={currentChat}
+                        socket ={socket}
                         />
                     </div>
                 )}

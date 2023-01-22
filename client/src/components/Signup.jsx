@@ -44,7 +44,6 @@ function Signup(){
         return true;
        }
     }
-
     const submitHandler =  async (event) => {
         event.preventDefault();
         if(validationHandler()){
