@@ -1,8 +1,21 @@
 const  Message = require("../modules/MessageModel")
 const getMessage= async (req, res) => {
     try {
-      const message = await Message.find({}).populate("user");
-      res.json(message);
+      const { from, to } = req.body;
+
+    const messages = await Message.find({
+      users: {
+        $all: [from, to],
+      },
+    }).sort({ updatedAt: 1 });
+
+    const projectedMessages = messages.map((msg) => {
+      return {
+        fromSelf: msg.sender.toString() === from,
+        message: msg.message.text,
+      };
+    });
+    res.json(projectedMessages);
     } catch (err) {
       res.status(500).json({
         status: "Failed",
@@ -21,8 +34,8 @@ const getMessage= async (req, res) => {
         sender: from,
       });
   
-      if (data)  {res.json({ msg: "Message added successfully." });}
-      else{  res.json({ msg: "Failed to add message to the database" })}
+      if (data)  {res.json({ msg: "Message added successfully.",data });}
+      else{  res.json({ msg: "Failed to add message to the database" ,data})}
     } catch (err) {
       res.status(500).json({
         status: "Failed",

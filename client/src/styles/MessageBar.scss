@@ -1,13 +1,15 @@
 .msg-bar-container{
     display: flex;
-    justify-content: center;
+    align-items: center;
+    margin-top: 490px;
+    position: absolute;
     .msg-bar-form{
         input{
-            width: 42rem;
+            width: 15rem;
             height: 2rem;
         }
         button{
-            width: 10rem;
+            width: 6rem;
             height: 2rem;
         }
     }
