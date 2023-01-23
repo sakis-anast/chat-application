@@ -1,94 +1,88 @@
-.homepage-container{
-    height: 100vh;
+.homepage-container {
+  height: 100vh;
 
-    .homepage-nav-container{
+  .homepage-nav-container {
+    height: 15%;
 
-        height: 15%;
+    .homepage-nav {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-        .homepage-nav{
+      .homepage-user-profile-pic-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
 
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            .homepage-user-profile-pic-container{
-                display: flex;
-                flex-direction: column;
-                height: 100%;
-
-                .homepage-user-profile-pic{
-                    border-radius: 50%;
-                    height: 100%;
-                }
-            }
-
-            .homepage-logout-btn-container{
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-
-                .homepage-logout-btn{
-
-                }
-            }
+        .homepage-user-profile-pic {
+          border-radius: 50%;
+          height: 100%;
         }
+      }
 
-        .homepage-body-container{
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
-            height: 33rem;
-            outline: red 1px solid;
+      .homepage-logout-btn-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
-            .homepage-body-userlist-container{
-                width: 25%;
-                height: 100%;
-                outline: red 1px solid;
-            }
-
-            .homepage-body-chatarea-container{
-
-                width: 75%;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
-
-
-                .chatarea{
-
-                    height: 90%;
-                    width: 100%;
-                }
-
-                .chatarea-inputs{
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-      
-                    width: 100%;
-                    height: 10%;
-
-                    .chatarea-input-container{
-                        width: 80%;
-                        
-                        .chatarea-input{
-                            width: 100%;
-                            height: 2em;
-                        }
-                    }
-                    .chatarea-btn-container{
-                        width: 10;
-                        .chatarea-btn{
-                            height: 2rem;
-                            width: 5rem;
-                        }
-                    }
-                }
-            }
+        .homepage-logout-btn {
         }
+      }
     }
+
+    .homepage-body-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 33rem;
+      outline: red 1px solid;
+
+      .homepage-body-userlist-container {
+        width: 25%;
+        height: 100%;
+        outline: red 1px solid;
+      }
+
+      .homepage-body-chatarea-container {
+        width: 75%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        .chatarea {
+          height: 90%;
+          width: 100%;
+        }
+
+        .chatarea-inputs {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          width: 100%;
+          height: 10%;
+
+          .chatarea-input-container {
+            width: 80%;
+
+            .chatarea-input {
+              width: 100%;
+              height: 2em;
+            }
+          }
+          .chatarea-btn-container {
+            width: 10;
+            .chatarea-btn {
+              height: 2rem;
+              width: 5rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }
