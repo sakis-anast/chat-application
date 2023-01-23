@@ -1,22 +1,21 @@
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../styles/Logout.scss";
 
-
-
 function Logout() {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-
-    const logoutHandle = () => {
-      localStorage.clear()
-        navigate("/");
-    }
+  const logoutHandle = () => {
+    localStorage.clear();
+    navigate("/");
+  };
 
   return (
     <div className="logout-btn-container">
-        <button className="logout-btn" onClick={logoutHandle}>Logout</button>
+      <button className="logout-btn" onClick={logoutHandle}>
+        Logout
+      </button>
     </div>
-  )
+  );
 }
 
 export default Logout;
