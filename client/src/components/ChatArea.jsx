@@ -8,6 +8,8 @@ function ChatArea({ currentChat, user, socket }) {
   const [messages, setMessages] = useState([]);
   const [arrivedMessage, setArrivedMessage] = useState(null);
   const scrollRef = useRef();
+
+  //get the messages for the selected conversation
   useEffect(() => {
     async function getMessages() {
       if (currentChat) {
@@ -21,7 +23,7 @@ function ChatArea({ currentChat, user, socket }) {
     }
     getMessages();
   }, [currentChat]);
-
+// sending messages and using socket.io
   const handleMessage = async (msg) => {
     await axios.post("http://localhost:3001/message", {
       from: user._id,
@@ -43,11 +45,11 @@ function ChatArea({ currentChat, user, socket }) {
         setArrivedMessage({ fromSelf: false, message: msg });
       });
     }
-  }, []);
+  }, [socket]);
   useEffect(() => {
     arrivedMessage && setMessages((prev) => [...prev, arrivedMessage]);
   }, [arrivedMessage]);
-
+//scroll to the bottom of the conversation 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);

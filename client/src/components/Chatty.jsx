@@ -3,9 +3,7 @@ import Users from "./Users";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
-
 import ChatArea from "./ChatArea";
-import MessageBar from "./MessageBar";
 import Welcome from "./Welcome";
 import { io } from "socket.io-client";
 import "../styles/Chatty.scss";
@@ -17,7 +15,7 @@ function Chatty() {
   const [currentChat, setCurrentChat] = useState(undefined);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-
+//getting the data of the user
   useEffect(() => {
     async function fetchData() {
       if (!localStorage.getItem("user")) {
@@ -28,7 +26,7 @@ function Chatty() {
       }
     }
     fetchData();
-  }, []);
+  }, [navigate]);
 
   useEffect(() => {
     if (user) {
@@ -36,6 +34,7 @@ function Chatty() {
       socket.current.emit("add-user", user._id);
     }
   }, [user]);
+  //getting the data of the other users (from everyone except the one using the app)
   useEffect(() => {
     async function fetchData() {
       if (user) {

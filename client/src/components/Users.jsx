@@ -4,7 +4,7 @@ import logo from "../logo_transparent.png";
 function Users({ users, user, setCurrentChat }) {
   const [username, setUsername] = useState(undefined);
   const [selected, setSelected] = useState(undefined);
-
+// getting the username of the user using the app
   useEffect(() => {
     async function username() {
       const data = await JSON.parse(localStorage.getItem("user"));
@@ -12,6 +12,7 @@ function Users({ users, user, setCurrentChat }) {
     }
     username();
   }, []);
+  //handling the change of chat selection
   const changeChat = (index, contact) => {
     setSelected(index);
     setCurrentChat(contact);

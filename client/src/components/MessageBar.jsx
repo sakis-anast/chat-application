@@ -4,7 +4,7 @@ import "../styles/MessageBar.scss";
 
 function MessageBar({ handleMessage }) {
   const [message, setMessage] = useState("");
-
+// send message and than clear the input
   const sendMessage = (event) => {
     event.preventDefault();
     if (message.length > 0) {

@@ -18,28 +18,15 @@ function Login() {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
-  const validationHandler = (event) => {
-    const { username, email, password } = values;
-    if (username === "") {
-      alert("username is required");
-      return false;
-    } else if (password === "") {
-      alert("password is required");
-      return false;
-    } else {
-      return true;
-    }
-  };
-
+// if the user already log in go to the chat area 
   useEffect(() => {
     if (localStorage.getItem("user")) {
       navigate("/chat");
     }
-  }, []);
-
+  }, );
+//authenticate the user and passing his data to the local storage
   const submitHandler = async (event) => {
     event.preventDefault();
-    if (validationHandler()) {
       const { username, password } = values;
       await axios
         .post("http://localhost:3001/users/login", { username, password })
@@ -51,7 +38,6 @@ function Login() {
             alert(data.message);
           }
         });
-    }
   };
 
   return (
@@ -72,12 +58,14 @@ function Login() {
               placeholder="username"
               name="username"
               onChange={(e) => changeHandler(e)}
+              required
             />
             <input
               type="password"
               placeholder="password"
               name="password"
               onChange={(e) => changeHandler(e)}
+              required
             />
             <button>Login</button>
             <span>

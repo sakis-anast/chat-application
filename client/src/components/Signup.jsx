@@ -6,12 +6,12 @@ import "../styles/Signup.scss";
 function Signup() {
   const logo = require("../logo_transparent.png");
   const navigate = useNavigate();
-
+// if the user already log in go to the chat area 
   useEffect(() => {
     if (localStorage.getItem("user")) {
       navigate("/chat");
     }
-  }, []);
+  });
 
   //user input values
   let [values, setValues] = useState({
@@ -25,21 +25,9 @@ function Signup() {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
-  const validationHandler = (event) => {
-    const { username, email, password } = values;
-    if (username === "") {
-      alert("enter username");
-      return false;
-    } else if (username.length < 3) {
-      alert("username must be at least 3 characters long.");
-      return false;
-    } else {
-      return true;
-    }
-  };
+// create new account
   const submitHandler = async (event) => {
     event.preventDefault();
-    if (validationHandler()) {
       const { username, email, password } = values;
       await axios
         .post("http://localhost:3001/users/signup", {
@@ -53,8 +41,7 @@ function Signup() {
           } else {
             alert(data.message);
           }
-        });
-    }
+        });  
   };
 
   return (
@@ -75,18 +62,21 @@ function Signup() {
               placeholder="username"
               name="username"
               onChange={(e) => changeHandler(e)}
+              required
             />
             <input
-              type="text"
+              type="email"
               placeholder="email"
               name="email"
               onChange={(e) => changeHandler(e)}
+              required
             />
             <input
               type="password"
               placeholder="password"
               name="password"
               onChange={(e) => changeHandler(e)}
+              required
             />
             <button>Create User</button>
             <span>

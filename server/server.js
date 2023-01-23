@@ -18,6 +18,8 @@ console.log("app running on port "+port));
 app.use("/users" , userRoute)
 app.use("/message" , messageRoute)
 
+
+//implementing socket.io
 const io = socket(server, {
     cors: {
       origin: "http://localhost:3000",
