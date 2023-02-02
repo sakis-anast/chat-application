@@ -1,18 +1,18 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const bcrypt = require("bcrypt")
+import express, { json } from "express";
+import { json as _json } from "body-parser";
+import bcrypt from "bcrypt";
 const app = express();
-const connection = require("./modules/connection");
-const userRoute= require("./routers/userRoute");
-const messageRoute= require("./routers/messageRoute");
+import connection from "./modules/connection";
+import userRoute from "./routers/userRoute";
+import messageRoute from "./routers/messageRoute";
 const port = 3001
-const cors = require("cors");
-const socket = require("socket.io")
-const path = require('path');
-app.use(bodyParser.json());
+import cors from "cors";
+import socket from "socket.io";
+import path from 'path';
+app.use(_json());
 app.use(cors({ origin: "*" }));
 
-app.use(express.json());
+app.use(json());
 const server = app.listen(port,()=>
 console.log("app running on port "+port));
  
