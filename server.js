@@ -8,6 +8,7 @@ const messageRoute= require("./routers/messageRoute");
 const port = 3001
 const cors = require("cors");
 const socket = require("socket.io")
+const path = require('path');
 app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
 
