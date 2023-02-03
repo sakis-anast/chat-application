@@ -35,10 +35,10 @@ app.use((error, req, res, next) => {
 mongoose.set('strictQuery', false);
 
 if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('../client/dist'));
+  app.use(express.static('../client'));
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve('../client', 'dist', 'index.html'));
+    res.sendFile(path.resolve('../client', 'index.html'));
   });
 }
 
