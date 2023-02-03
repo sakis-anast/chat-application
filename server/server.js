@@ -58,25 +58,25 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 //implementing socket.io
-const io = socket(server, {
-    cors: {
-      origin: "http://localhost:3000",
-      credentials: true,
-    },
-  });
+// const io = socket(server, {
+//     cors: {
+//       origin: "http://localhost:3000",
+//       credentials: true,
+//     },
+//   });
 
-  global.onlineUsers = new Map();
-io.on("connection", (socket) => {
-  global.chatSocket = socket;
-  socket.on("add-user", (userId) => {
-    onlineUsers.set(userId, socket.id);
-  })
+//   global.onlineUsers = new Map();
+// io.on("connection", (socket) => {
+//   global.chatSocket = socket;
+//   socket.on("add-user", (userId) => {
+//     onlineUsers.set(userId, socket.id);
+//   })
 
-  socket.on("send-msg", (data) => {
-    const sendUserSocket = onlineUsers.get(data.to);
-    if (sendUserSocket) {
-      socket.to(sendUserSocket).emit("msg-receive", data.message);
-    }
-  });
-});
+//   socket.on("send-msg", (data) => {
+//     const sendUserSocket = onlineUsers.get(data.to);
+//     if (sendUserSocket) {
+//       socket.to(sendUserSocket).emit("msg-receive", data.message);
+//     }
+//   });
+// });
 
