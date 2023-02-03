@@ -11,7 +11,8 @@ const socket = require("socket.io")
 const path = require('path');
 app.use(bodyParser.json());
 app.use(cors({ origin: "*" }));
-
+const mongoose = require("mongoose");
+require("dotenv").config();
 app.use(express.json());
 const server = app.listen(port,()=>
 console.log("app running on port "+port));
