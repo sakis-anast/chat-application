@@ -14,8 +14,7 @@ app.use(cors({ origin: "*" }));
 const mongoose = require("mongoose");
 require("dotenv").config();
 app.use(express.json());
-const server = app.listen(port,()=>
-console.log("app running on port "+port));
+
  
 app.use("/users" , userRoute)
 app.use("/message" , messageRoute)
@@ -54,9 +53,9 @@ const connectDB = async () => {
   }
 };
 
-app.listen(PORT, () => {
+app.listen(port, () => {
   connectDB();
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${port}`);
 });
 //implementing socket.io
 const io = socket(server, {
