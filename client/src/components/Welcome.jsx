@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/Welcome.scss";
+import Logout from "./Logout";
 
 function Welcome({ user }) {
   return (
@@ -8,6 +9,7 @@ function Welcome({ user }) {
         <h1>Welcome, {user.username}</h1>
         <h3>Please select a chat to Start messaging.</h3>
       </div>
+      <Logout/>
     </div>
   );
 }

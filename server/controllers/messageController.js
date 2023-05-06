@@ -1,4 +1,4 @@
-const  Message = require("../modules/messageModel")
+const  Message = require("../modules/MessageModel")
 //getting the message conversation of the user towards any other user and sorting them
 const getMessage= async (req, res) => {
     try {

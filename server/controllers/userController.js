@@ -49,6 +49,7 @@ if (user){
   else {
     res.send({message:"Wrong Username"})
   }};
+  
   module.exports = {
     getUser,
     signUp,
